@@ -1,4 +1,4 @@
-# Version: 1.2.0 - Updated to handle push conflicts and Node.js version warnings
+# Version: 1.3.0 - Added rebase step to handle remote changes before pushing
 name: Merge Markdown Documentation
 
 on:
@@ -31,7 +31,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-      - name: Pull changes from remote (fork)
+      - name: Pull and Rebase changes
         run: |
           git fetch origin
           git rebase origin/main || exit 0 # Exit gracefully if rebase fails
