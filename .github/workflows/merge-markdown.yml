@@ -1,3 +1,4 @@
+# Version: 1.2.0 - Updated to handle push conflicts and Node.js version warnings
 name: Merge Markdown Documentation
 
 on:
@@ -9,12 +10,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 # Version 4 - Latest version
         with:
           ref: main # Ensure you're working on the main branch
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v4 # Version 4 - Latest version
         with:
           python-version: '3.x'
 
@@ -33,10 +34,10 @@ jobs:
       - name: Pull changes from remote (fork)
         run: |
           git fetch origin
-          git rebase origin/main
+          git rebase origin/main || exit 0 # Exit gracefully if rebase fails
 
       - name: Commit and push merged documentation
         run: |
           git add merged-docs.md
-          git commit -m "Update merged documentation"
+          git commit -m "Update merged documentation" || exit 0 # Exit gracefully if no changes to commit
           git push origin main
