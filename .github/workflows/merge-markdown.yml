@@ -9,10 +9,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4 # Updated to the latest version
+        uses: actions/checkout@v4
+        with:
+          ref: main # Ensure you're working on the main branch
 
       - name: Set up Python
-        uses: actions/setup-python@v4 # Updated to the latest version
+        uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
@@ -23,10 +25,18 @@ jobs:
       - name: Run merge script
         run: python merge_docs.py
 
-      - name: Commit and push merged documentation
+      - name: Configure Git
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
+
+      - name: Pull changes from remote (fork)
+        run: |
+          git fetch origin
+          git rebase origin/main
+
+      - name: Commit and push merged documentation
+        run: |
           git add merged-docs.md
           git commit -m "Update merged documentation"
-          git push
+          git push origin main
