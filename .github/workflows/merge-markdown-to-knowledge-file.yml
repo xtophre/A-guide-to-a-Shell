@@ -39,5 +39,5 @@ jobs:
       - name: Commit and push merged documentation
         run: |
           git add merged-docs.md
-          git commit -m "Update merged documentation" || exit 0 # Exit gracefully if no changes to commit
+          git commit -m "Update merged documentation to knowledge file" || exit 0 # Exit gracefully if no changes to commit
           git push origin main
