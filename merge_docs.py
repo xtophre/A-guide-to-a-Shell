@@ -29,7 +29,7 @@ def merge_markdown_files():
                 merged_content += f"\n\n# {file_path}\n\n{content}"
 
     # Write the merged content to a new file
-    with open("merged-docs.md", 'w') as f:
+    with open("merged-docs-knowledge-file.md", 'w') as f:
         f.write(merged_content)
 
 if __name__ == "__main__":
