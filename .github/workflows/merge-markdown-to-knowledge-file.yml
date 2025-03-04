@@ -23,8 +23,8 @@ jobs:
         run: |
           pip install markdown
 
-      - name: Run merge script
-        run: python merge_docs.py
+      - name: Run merge script to knowledge file
+        run: python merge_docs-to-knowledge-file.py
 
       - name: Configure Git
         run: |
