@@ -1,5 +1,5 @@
 # Version: 1.3.0 - Added rebase step to handle remote changes before pushing
-name: Merge Markdown Documentation
+name: Merge Markdown Documentation into Knowledge File
 
 on:
   workflow_dispatch: # Allows manual triggering of the workflow
